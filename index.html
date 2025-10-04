@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathfinder – Career Guide</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">🔭</div>
+      <div>
+        <h1>Pathfinder</h1>
+        <p class="tagline">Discover. Plan. Navigate your career.</p>
+      </div>
+    </div>
+    <nav class="top-nav">
+      <button class="nav-btn active" data-target="#discover">Discover</button>
+      <button class="nav-btn" data-target="#plan">Plan</button>
+      <button class="nav-btn" data-target="#navigate">Navigate</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Discover -->
+    <section id="discover" class="panel active">
+      <div class="card">
+        <h2>Career Discovery Quiz</h2>
+        <p class="muted">Answer a few prompts to personalize role recommendations.</p>
+        <form id="quiz-form" class="grid-2">
+          <label class="field">
+            <span>What type of work excites you most?</span>
+            <select name="interest">
+              <option value="data">Working with data & systems</option>
+              <option value="design">Designing user experiences</option>
+              <option value="build">Building software & products</option>
+              <option value="people">Working with people & operations</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Your strongest strength?</span>
+            <select name="strength">
+              <option value="math">Analytical/Math</option>
+              <option value="creativity">Creativity</option>
+              <option value="communication">Communication</option>
+              <option value="organization">Organization</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Preferred environment</span>
+            <select name="environment">
+              <option value="startup">Fast-paced startup</option>
+              <option value="enterprise">Enterprise/Corporate</option>
+              <option value="research">Research/Academia</option>
+              <option value="consulting">Consulting/Client-facing</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Top career value</span>
+            <select name="value">
+              <option value="impact">Impact</option>
+              <option value="pay">Compensation</option>
+              <option value="stability">Stability</option>
+              <option value="growth">Growth/Learning</option>
+            </select>
+          </label>
+          <div class="full">
+            <button type="submit" class="primary">Get Recommendations</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="recommendations" class="card hidden">
+        <h2>Top Role Recommendations</h2>
+        <div id="reco-list" class="reco-list"></div>
+      </div>
+    </section>
+
+    <!-- Plan -->
+    <section id="plan" class="panel">
+      <div class="card">
+        <h2>Skill Gap Analysis</h2>
+        <div class="grid-2">
+          <label class="field">
+            <span>Target Role</span>
+            <select id="target-role"></select>
+          </label>
+          <label class="field">
+            <span>Your current skills (comma-separated)</span>
+            <input id="current-skills" placeholder="e.g., Python, SQL, Communication" />
+          </label>
+          <div class="full">
+            <button id="analyze-btn" class="secondary">Analyze Gaps</button>
+          </div>
+        </div>
+
+        <div id="gap-result" class="gap-grid hidden">
+          <div>
+            <h3>Your Strengths</h3>
+            <ul id="present-skills" class="chips"></ul>
+          </div>
+          <div>
+            <h3>Skill Gaps</h3>
+            <ul id="missing-skills" class="chips danger"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="learning-plan" class="card hidden">
+        <h2>Personalized Learning Plan</h2>
+        <p class="muted">Based on your gaps, here is a step-by-step path with curated resources.</p>
+        <div id="plan-list" class="plan-list"></div>
+        <div class="actions">
+          <button id="export-plan" class="secondary">Export Plan (JSON)</button>
+          <button id="reset-plan" class="link">Reset Progress</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigate -->
+    <section id="navigate" class="panel">
+      <div class="card">
+        <h2>Resume & ATS Analyzer</h2>
+        <div class="grid-2">
+          <label class="field">
+            <span>Paste your resume text</span>
+            <textarea id="resume-text" rows="8" placeholder="Paste resume or notes here..."></textarea>
+          </label>
+          <label class="field">
+            <span>Or upload a .txt file</span>
+            <input type="file" id="resume-file" accept=".txt" />
+          </label>
+          <div class="full">
+            <button id="analyze-resume" class="secondary">Analyze Resume</button>
+          </div>
+        </div>
+        <div id="resume-result" class="resume-result hidden"></div>
+      </div>
+
+      <div class="card">
+        <h2>Milestones & Job Search</h2>
+        <ul id="milestones" class="milestones"></ul>
+        <div class="actions">
+          <button id="add-milestone" class="secondary">Add Milestone</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>© <span id="year"></span> Pathfinder • Local-first, private by design</span>
+    <span class="dot">•</span>
+    <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Open Source Resources</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
